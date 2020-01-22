@@ -1,0 +1,24 @@
+doctype html
+html
+  head
+    title Crystal Docs
+    meta name="viewport" content="width=device-width, initial-scale=1"
+    link rel="stylesheet" type="text/css" href="/css/application.css?#{File.mtime('views/application.sass').to_i}"
+  body
+    .header
+      ul
+        li
+          a href="/" Crystal Docs
+        li
+          a href="/shards" Shards
+        li
+          a href="/add" Add
+        li
+          form method="get" action="/search"
+            input type="text" name="q" placeholder="kemal" required="true" value="#{params[:q]}"
+            input type="submit" value="Search"
+    - unless request.path.start_with?("/shards/")
+      .container
+        == yield
+    - else
+      == yield

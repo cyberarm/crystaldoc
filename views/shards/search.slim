@@ -1,0 +1,5 @@
+h1 Search results for "#{params[:q]}"
+
+- @found_projects.each do |project|
+  h2
+    a href="#{project.repository}" =project.name
