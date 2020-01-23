@@ -3,7 +3,10 @@ module CrystalDocs
     namespace "/shards/?" do
 
       get "/?" do
-        @projects = Projects.all
+        @projects = Projects.all.sort_by { |s| s.name.downcase }
+        if params[:limit]
+          @projects = @projects.select { |s| s.name.downcase.start_with?(params[:limit].downcase) }
+        end
 
         slim :"shards/index"
       end
@@ -36,7 +39,11 @@ module CrystalDocs
     end
 
     get "/:provider/:username/:project" do
-      "No such project"
+      if File.exist?("#{CrystalDocs::Projects::DOCS_PATH}/#{params[:provider]}/#{params[:username]}/#{params[:project]}")
+        redirect "/shards/#{params[:project]}"
+      else
+        slim :"shards/no_docs"
+      end
     end
   end
 end

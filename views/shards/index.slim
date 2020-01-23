@@ -1,4 +1,15 @@
 h1 All Known Shards
+p
+  a href="/shards" All
+  - Array("A".."Z").each do |letter|
+    - if params[:limit] && letter.downcase == params[:limit].downcase
+      span style="margin-left: 10pt; font-weight: bolder" =letter
+    - else
+      a style="margin-left: 10pt" href="/shards?limit=#{letter}" =letter
+
+hr
 - @projects.each do |project|
   h2
     a href="/shards/#{project.name}" =project.name
+- if @projects.size == 0
+  h2 No shards found

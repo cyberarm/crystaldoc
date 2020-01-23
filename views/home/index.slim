@@ -2,6 +2,8 @@ h1 CrystalDocs.info
 p Making <code>crystal docs</code> available to everyone.
 
 h1 Recently Updated Shards
+hr
 - @projects.each do |project|
   h2
     a href="#{project.repository}" =project.name
+  p Last updated: #{project.updated_at.strftime("%X %x")}
