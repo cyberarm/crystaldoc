@@ -1,7 +1,7 @@
 module CrystalDocs
   class Web < Sinatra::Application
     get "/?" do
-      @projects = Projects.all.sort_by { |s| s.updated_at }.take(10).reverse
+      @shards = Shards.all.sort_by { |s| s.updated_at }.take(10).reverse
 
       slim :"home/index"
     end

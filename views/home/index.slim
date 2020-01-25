@@ -3,7 +3,6 @@ p Making <code>crystal docs</code> available to everyone.
 
 h1 Recently Updated Shards
 hr
-- @projects.each do |project|
-  h2
-    a href="#{project.repository}" =project.name
-  p Last updated: #{project.updated_at.strftime("%X %x")}
+- @shards.each do |shard|
+  == slim :"shards/_shard", locals: {shard: shard}
+  p Last updated: #{shard.updated_at.strftime("%X %x")}

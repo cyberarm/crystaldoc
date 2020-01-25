@@ -17,8 +17,5 @@ html
           form method="get" action="/search"
             input type="text" name="q" placeholder="kemal" required="true" value="#{params[:q]}"
             input type="submit" value="Search"
-    - unless request.path.start_with?("/shards/")
-      .container
-        == yield
-    - else
+    .container
       == yield

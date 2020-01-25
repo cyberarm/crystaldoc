@@ -1,0 +1,5 @@
+- case @shard.status
+- when :pending
+  h1 Docs have not yet been built for #{@shard.name}. 🕐
+- when :failed
+    h1 Failed to build docs for #{@shard.name}!

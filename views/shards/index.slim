@@ -8,8 +8,7 @@ p
       a style="margin-left: 10pt" href="/shards?limit=#{letter}" =letter
 
 hr
-- @projects.each do |project|
-  h2
-    a href="/shards/#{project.name}" =project.name
-- if @projects.size == 0
+- @shards.each do |shard|
+  == slim :"shards/_shard", locals: {shard: shard}
+- if @shards.size == 0
   h2 No shards found

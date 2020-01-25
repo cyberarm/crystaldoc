@@ -1,5 +1,5 @@
 h1 Search results for "#{params[:q]}"
 
-- @found_projects.each do |project|
+- @found_shards.each do |shard|
   h2
-    a href="#{project.repository}" =project.name
+    a href="#{shard.repository}" =shard.name
